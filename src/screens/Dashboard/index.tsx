@@ -1,5 +1,6 @@
 import React from 'react'; 
-import {
+import { HighlightCard } from '../../components/HighlightCard/index';
+ import {
     Container, 
     Header,
     UserWrapper,
@@ -27,6 +28,8 @@ export function Dashboard(){
                     <Icon name="power"/> 
                 </UserWrapper>
              </Header>
+
+             <HighlightCard /> 
         </Container>
     )
 } 
