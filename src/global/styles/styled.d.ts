@@ -1,11 +1,15 @@
 //arqv para sobrescrever tipos
+//nesse caso sobrescrever o styledcomponents
 
 import 'styled-components';
 //import theme from './theme'
 import theme from './theme';
-
-declare module 'styled-componeents'{
+//import {createGlobalStyle} from 'styled-components';
+declare module 'styled-components' {
     type ThemeType = typeof theme 
-
-    export interface DefaultTheme extends ThemeType{}
+    //createGlobalStyle
+    export interface DefaultTheme extends ThemeType {}
+    
 }
+   
+ 
