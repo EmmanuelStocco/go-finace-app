@@ -42,7 +42,7 @@ export const User = styled.View `
 export const UserGreeting = styled.Text `
     color:  ${({ theme }) => theme.colors.shape};
     
-font-size: ${RFValue(18)}px;
+    font-size: ${RFValue(18)}px;
     font-family:  ${({ theme }) => theme.fonts.regular};
 `;
 export const UserName = styled.Text `
@@ -67,4 +67,18 @@ export const HighlightCards = styled.ScrollView.attrs({
     width: 100%;
     position: absolute;
     margin-top: ${RFPercentage(20)}px;
+`;
+
+export const Transactions = styled.View`
+    flex: 1%;
+    background:  ${({ theme }) => theme.colors.background};
+    padding: 0 24px;
+
+    margin-top: ${RFPercentage(12)}px;
+`
+export const Title = styled.Text`
+    font-size: ${RFValue(18)}px;
+    font-family: ${({theme})=> theme.fonts.regular};
+
+    margin-bottom: 16px;
 `;
