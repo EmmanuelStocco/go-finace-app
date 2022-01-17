@@ -1,5 +1,4 @@
 import React from 'react'; 
-import { View } from 'react-native';
 import {
     Container, 
     Header,
@@ -8,8 +7,9 @@ import {
     Photo, 
     User,
     UserGreeting,
-    UserName
-} from './styles';
+    UserName,
+    Icon
+} from './styles'; 
 
 export function Dashboard(){
     return (
@@ -22,8 +22,9 @@ export function Dashboard(){
                             <UserGreeting> Olá </UserGreeting>
                             <UserName> Emmanuel </UserName>
                         </User>
-
                     </UserInfo>
+
+                    <Icon name="power"/> 
                 </UserWrapper>
              </Header>
         </Container>
