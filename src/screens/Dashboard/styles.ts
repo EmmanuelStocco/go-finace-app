@@ -54,3 +54,12 @@ export const Icon = styled(Feather) `
     color: ${({ theme }) => theme.colors.secondary};
     font-size: ${RFValue(24)}px;
 `;
+
+//acessando as props da scrolview pelo styled component (.attrs({}))
+export const HighlightCards = styled.ScrollView.attrs({
+    horizontal: true,
+    showsHorizontalScrollIndicator: true,
+    contentContainerStyle: { paddingHorizontal: 24},
+})`
+    
+`;

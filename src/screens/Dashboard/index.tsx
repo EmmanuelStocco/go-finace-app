@@ -7,6 +7,7 @@ import { HighlightCard } from '../../components/HighlightCard/index';
     UserInfo,
     Photo, 
     User,
+    HighlightCards,
     UserGreeting,
     UserName,
     Icon
@@ -29,7 +30,13 @@ export function Dashboard(){
                 </UserWrapper>
              </Header>
 
-             <HighlightCard /> 
+            <HighlightCards
+               
+            >
+                <HighlightCard /> 
+                <HighlightCard /> 
+                <HighlightCard /> 
+            </HighlightCards>    
         </Container>
     )
 } 
