@@ -30,9 +30,7 @@ export function Dashboard(){
                 </UserWrapper>
              </Header>
 
-            <HighlightCards
-               
-            >
+            <HighlightCards>
                 <HighlightCard /> 
                 <HighlightCard /> 
                 <HighlightCard /> 
