@@ -88,7 +88,6 @@ export const Title = styled.Text`
     margin-bottom: 16px;
 `;
  
-
 //forma atual com erro concertado e aplicação rodando
 export const TransactionList = styled(
     FlatList as new (props: FlatListProps<DataListProps>) => FlatList<DataListProps>
