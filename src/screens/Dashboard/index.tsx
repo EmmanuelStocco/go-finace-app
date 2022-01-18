@@ -1,9 +1,8 @@
-import React from 'react'; 
-import { getBottomSpace } from 'react-native-iphone-x-helper';
+import React from 'react';  
 
 
 import { HighlightCard } from '../../components/HighlightCard/index';
-import { TransactionCard } from '../../components/TransactionCard';
+import { TransactionCard, TransactionCardProps } from '../../components/TransactionCard';
 
  import {
     Container, 
@@ -21,10 +20,14 @@ import { TransactionCard } from '../../components/TransactionCard';
     TransactionList
 } from './styles'; 
 
-export function Dashboard(){
+export interface DataListProps extends TransactionCardProps{
+    id: string;
+}
 
-    const data =  [
+export function Dashboard(){
+    const data: DataListProps[] =  [
         {   
+            id: '1',
             type: 'positive',
             title:"Desenvolvimento de site",
             amount:"R$ 12.000,00",
@@ -35,6 +38,7 @@ export function Dashboard(){
             date:"13/04/2020/"
         },
         {   
+            id: '2',
             type: 'negative',
             title:"Hamburgueria e Pizzaria",
             amount:"R$ 52.000,00",
@@ -46,6 +50,7 @@ export function Dashboard(){
         },
     
         {   
+            id: '3',
             type: 'negative',
             title:"Alugel do apartamento",
             amount:"R$ 102.000,00",
@@ -54,7 +59,8 @@ export function Dashboard(){
                 icon: 'shopping-bag'
                 },
             date:"10/04/2020/"
-        },];
+        }
+    ];
 
     return (
         <Container>
@@ -79,14 +85,12 @@ export function Dashboard(){
             </HighlightCards>   
 
             <Transactions>
-                <Title>Listagem</Title>   
+                <Title>Listagem</Title>  
+                 
                 <TransactionList 
                     data={data}
+                    keyExtractor={item => item.id}
                     renderItem={({ item }) => <TransactionCard data={item} />  }
-                    showsVerticalScrollIndicator={false}
-                    contentContainerStyle={{
-                        paddingBottom: getBottomSpace()
-                    }}
               /> 
 
                 
