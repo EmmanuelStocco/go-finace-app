@@ -36,7 +36,7 @@ export function TransactionCard({ data } : Props){
 
             <Amount type={data.type}>
                 {data.type === 'negative' && '- '}
-                { data. amount }
+                { data.amount }
              </Amount>
 
             <Footer>
