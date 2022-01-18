@@ -17,7 +17,7 @@ interface Props {
     lastTransaction: string;
 }
 
-//escolhendo icone com base em cartão
+//escolhendo icone com base propriedade passada cartão
 const icon = {
     up: 'arrow-up-circle',
     down: 'arrow-down-circle',
