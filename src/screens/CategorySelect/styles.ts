@@ -43,7 +43,6 @@ export const Category = styled.TouchableOpacity<CategoryProps>`
     background-color: ${({ isActive }) => 
         isActive ? theme.colors.secondary_light : theme.colors.background 
     };
-
 `;
 
 export const Icon = styled(Feather)` 

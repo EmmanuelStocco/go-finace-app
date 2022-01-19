@@ -25,7 +25,6 @@ interface Props {
     category: Category;
     setCategory: (category: Category) => void;
     closeSelectCategory: () => void;
-
 }
 
 export function CategorySelect({
@@ -39,32 +38,32 @@ export function CategorySelect({
     return(
         <Container>
             <Header>
-                <Title> Categoria </Title>
+                    <Title> Categoria </Title>
             </Header>
 
-        <FlatList
-            data={categories}
-            style={{ flex: Poppins_100Thin, width: '100%'}}
-            keyExtractor={(item) => item.key}
-            renderItem={({ item }) => (
-                <Category
-                    onPress={()=> handleCategorySelect(item)}
-                    isActive={category.key === item.key}
-                >
-                    <Icon name={item.icon} />
-                    <Name> {item.name} </Name>
-                </Category>
-            )}
-            ItemSeparatorComponent={()=> <Separator/>}
-                    />
+            <FlatList
+                data={categories}
+                style={{ flex: Poppins_100Thin, width: '100%'}}
+                keyExtractor={(item) => item.key}
+                renderItem={({ item }) => (
+                    <Category
+                        onPress={()=> handleCategorySelect(item)}
+                        isActive={category.key === item.key}
+                    >
+                        <Icon name={item.icon} />
+                        <Name> {item.name} </Name>
+                    </Category>
+                )}
+                ItemSeparatorComponent={()=> <Separator/>}
+                        />
 
-            <Footer>
-                <Button
-                 title="Selecionar"
-                 onPress={closeSelectCategory}
-                
-                />
-            </Footer>
+                <Footer>
+                    <Button
+                    title="Selecionar"
+                    onPress={closeSelectCategory}
+                    
+                    />
+                </Footer>
 
         </Container>
     )
