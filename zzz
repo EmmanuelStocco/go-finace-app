@@ -1,1 +1,46 @@
-justifycontent para 1 de cada lado
+ 
+  //
+
+     type FormData = {
+        [name: string]: any;
+      }
+      
+      function handleSubmitRegister(form: FormData) { 
+          if(!transactionType) {
+            return console.log('Selecione o tipo de transação');
+          }
+      
+          if(category.key === 'category') {
+            return console.log('Selecione a categoria');
+          }
+      
+          const dataFormRegister = {
+            name: form.name,
+            amount: form.amount,
+            transactionType,
+            category: category.key
+          }
+          console.log('Log: dataFormRegister', dataFormRegister)
+        }
+
+    //
+
+    /*
+    function handleRegister(form: FormData){
+        const data = {
+            name: form.name,
+            amount: form.amount,
+            transactionType,
+            category: category.key
+        }
+        console.log(data)
+    }
+    */
+    //solução erro Form 
+
+    /*
+interface FormData {
+    name: string;
+    amount: string;
+}
+*/
