@@ -2,7 +2,7 @@ import React from 'react';
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
 
-import { CategorySelect } from './src/screens/CategorySelect';
+import { Register } from './src/screens/Register';
 
 import {
   Poppins_400Regular,
@@ -29,8 +29,8 @@ export default function App() {
 
   return  (
     <ThemeProvider theme={theme}>
-        <CategorySelect
-     
+        <Register
+
 
         />
       </ThemeProvider>
