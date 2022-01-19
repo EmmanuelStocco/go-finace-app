@@ -3,8 +3,8 @@ import React from 'react';
 
 import { HighlightCard } from '../../components/HighlightCard/index';
 import { TransactionCard, TransactionCardProps } from '../../components/TransactionCard';
-
- import {
+ 
+import {
     Container, 
     Header,
     UserWrapper,
@@ -18,7 +18,7 @@ import { TransactionCard, TransactionCardProps } from '../../components/Transact
     Transactions,
     Title,
     TransactionList,
-   // LogoutButton
+    LogoutButton
 } from './styles'; 
 
 export interface DataListProps extends TransactionCardProps{
@@ -76,9 +76,9 @@ export function Dashboard(){
                         </User>
                     </UserInfo>
                     
-                    
-                      <Icon name="power"/> 
-                    
+                    <LogoutButton onPress={() => {}}>
+                        <Icon name="power"/> 
+                    </LogoutButton>
                 </UserWrapper>
              </Header>
 

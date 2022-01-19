@@ -2,9 +2,8 @@ import styled from 'styled-components/native';
 import { FlatList, FlatListProps } from 'react-native';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize' //lib para conversão e proporção 
 import { Feather } from '@expo/vector-icons';
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-//import { getBottomSpace } from 'react-native-iphone-x-helper';
-//import { BorderlessButton } from 'react-native-gesture-handler';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper'; 
+import { BorderlessButton } from 'react-native-gesture-handler';
 
 import { DataListProps } from '.';
 
@@ -64,9 +63,9 @@ export const Icon = styled(Feather) `
 `;
 
 
-//export const LogoutButton = styled() `
+ export const LogoutButton = styled(BorderlessButton) `
 
-//`;
+ `;
 
 //acessando as props da scrolview pelo styled component (.attrs({}))
 export const HighlightCards = styled.ScrollView.attrs({
