@@ -89,16 +89,22 @@ export function Register(){
             return Alert.alert('Selecione a categoria');
           }
       
-          const data = {
+          const newTransaction = {
             name: form.name,
             amount: form.amount,
             transactionType,
             category: category.key
-          }
-          console.log('Log: data', data) 
+          } 
 
         try{
-            await AsyncStorage.setItem(dataKey, JSON.stringify(data)); //a função só aceita string
+            const data = await AsyncStorage.getItem(dataKey); //recuperando todos os dados no async storage
+            const currentData = data ? JSON.parse(data) : []; //caso tenha algo converta para modificar, caso não retorne array 
+            const dataFormatted = [ //dados antigos + atuais
+                ...currentData, 
+                newTransaction
+
+            ];
+            await AsyncStorage.setItem(dataKey, JSON.stringify(dataFormatted)); //a função só aceita string
 
 
         } catch(error){
@@ -108,8 +114,8 @@ export function Register(){
     }
     
     useEffect(()=> {
-        async function loadData() {
-            //buscando dados do storage
+       async function loadData() {
+         //   buscando dados do storage
            const data = await AsyncStorage.getItem(dataKey);
            console.log(" No registro Async, temos:  ")
            console.log(JSON.parse(data!))
