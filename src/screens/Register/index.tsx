@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
     Modal, 
     TouchableWithoutFeedback, 
@@ -8,6 +8,7 @@ import {
  } from 'react-native';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import AsyncStorage from '@react-native-async-storage/async-storage' 
 
 import { useForm } from 'react-hook-form'
 
@@ -45,7 +46,8 @@ export function Register(){
     const [transactionType, setTransactionType] = useState('');
     const [categoryModalOpen, setCategoryModalOpen ] = useState(false);
  
-    
+    const dataKey = '@gofinances:transactions';
+
     //
     const [category, setCategory] = useState({
         key: 'category',
@@ -77,7 +79,8 @@ export function Register(){
         [name: string]: any;
       }
       
-      function handleSubmitRegister(form: FormData) { 
+      //salvando dados de forma asincrona no celular
+      async function handleRegister(form: FormData) { 
           if(!transactionType) {
             return Alert.alert('Selecione o tipo de transação');
           }
@@ -86,17 +89,35 @@ export function Register(){
             return Alert.alert('Selecione a categoria');
           }
       
-          const dataFormRegister = {
+          const data = {
             name: form.name,
             amount: form.amount,
             transactionType,
             category: category.key
           }
-          console.log('Log: dataFormRegister', dataFormRegister)
+          console.log('Log: data', data) 
+
+        try{
+            await AsyncStorage.setItem(dataKey, JSON.stringify(data)); //a função só aceita string
+
+
+        } catch(error){
+            console.log(error);
+            Alert.alert("Não foi possivel salvar");
+        }
+    }
+    
+    useEffect(()=> {
+        async function loadData() {
+            //buscando dados do storage
+           const data = await AsyncStorage.getItem(dataKey);
+           console.log(" No registro Async, temos:  ")
+           console.log(JSON.parse(data!))
         }
 
-  
- 
+        loadData();
+    }, []);
+
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -145,7 +166,7 @@ export function Register(){
 
                         <Button 
                                 title="Enviar"
-                                onPress={handleSubmit(handleSubmitRegister)}
+                                onPress={handleSubmit(handleRegister)}
                             />
 
                         <Modal visible={categoryModalOpen}>
