@@ -8,9 +8,12 @@ import {
  } from 'react-native';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import AsyncStorage from '@react-native-async-storage/async-storage' 
+import AsyncStorage from '@react-native-async-storage/async-storage' ;
+import uuid from 'react-native-uuid';
 
 import { useForm } from 'react-hook-form'
+import { useNavigation } from '@react-navigation/native'
+
 
 import  { Input } from '../../components/Form/Input';
 import { InputForm } from '../../components/Form/inputForm'
@@ -47,16 +50,19 @@ export function Register(){
     const [categoryModalOpen, setCategoryModalOpen ] = useState(false);
  
     const dataKey = '@gofinances:transactions';
-
-    //
+ 
     const [category, setCategory] = useState({
         key: 'category',
         name: 'Categoria'
     });
 
+    type NavigationProps = { navigate: (screen: string)=> void}
+    const navigation = useNavigation<NavigationProps>();
+
     const {
         control,
         handleSubmit,
+        reset,
         formState: { errors } //capturando o estado de erros de forma desestruturada
     } = useForm({
         resolver: yupResolver(schema) //definindo padrão de recebimento de valores
@@ -90,10 +96,12 @@ export function Register(){
           }
       
           const newTransaction = {
+            id: String(uuid.v4()),
             name: form.name,
             amount: form.amount,
             transactionType,
-            category: category.key
+            category: category.key,
+            date: new Date()
           } 
 
         try{
@@ -105,6 +113,15 @@ export function Register(){
 
             ];
             await AsyncStorage.setItem(dataKey, JSON.stringify(dataFormatted)); //a função só aceita string
+
+            reset();
+            setTransactionType('');
+            setCategory({
+                key: 'category',
+                name: 'Categoria'
+            });
+
+            navigation.navigate('Listagem');
 
 
         } catch(error){
