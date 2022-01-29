@@ -53,7 +53,7 @@ export function Dashboard(){
 
         function getLastTransactionDate(
             collection :DataListProps[], 
-            type: 'postive' | 'negative'){
+            type: 'positive' | 'negative'){
               //utlima transação - date
                 const lastTransaction = new Date( Math.max.apply(Math,  //pega a data maior
                     collection
@@ -101,7 +101,7 @@ export function Dashboard(){
         });
 
         setTransactions(transactionsFormatted);
-        const lastTransactionEntries = getLastTransactionDate(transactions, 'postive')
+        const lastTransactionEntries = getLastTransactionDate(transactions, 'positive')
         const lastTransactionExpensives = getLastTransactionDate(transactions, 'negative')
         const totalInterval = `01 a ${lastTransactionExpensives}`
 
