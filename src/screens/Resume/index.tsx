@@ -3,13 +3,20 @@ import AsyncStorage from '@react-native-async-storage/async-storage' ;
 import { VictoryPie } from 'victory-native';
 import theme from '../../global/styles/theme';
 import { HistoryCard } from '../../components/HistoryCard/index';
+import { useBottomTabBarHeight} from '@react-navigation/bottom-tabs'
+
+
 
 import {
     Container,
     Header,
     Title,
     Content,
-    ChartContainer
+    ChartContainer,
+    MonthSelect,
+    MonthSelectButton,
+    MonthSelectIcon,  
+    Month,
 
 } from './styles'
 
@@ -105,37 +112,55 @@ export function Resume (){
                 <Title> Resumo por categoria </Title>
             </Header>
 
-            <Content >
+            <Content
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{
+                    paddingHorizontal: 24,
+                    paddingBottom: useBottomTabBarHeight(),
+                }}
+            >
 
-            <ChartContainer>
-                <VictoryPie
-                    data={totalByCategories}
-                    colorScale={totalByCategories.map(category => category.color)}
-                    style={{
-                        labels: {
-                             fontSize: RFValue(18),
-                             fontWeight: 'bold',
-                             fill: theme.colors.shape                        
-                            }
-                    }}
-                    labelRadius = {50}
-                    x = "percent"
-                    y = "total"
-                
-                />
-            </ChartContainer>
+            <MonthSelect>
+                <MonthSelectButton> 
+                    <MonthSelectIcon name='chevron-left' />
+                </MonthSelectButton>
+
+                <Month>Maio</Month>
+
+                <MonthSelectButton> 
+                    <MonthSelectIcon name='chevron-right' />
+                </MonthSelectButton>
+            </MonthSelect>
+
+                <ChartContainer>
+                    <VictoryPie
+                        data={totalByCategories}
+                        colorScale={totalByCategories.map(category => category.color)}
+                        style={{
+                            labels: {
+                                fontSize: RFValue(18),
+                                fontWeight: 'bold',
+                                fill: theme.colors.shape                        
+                                }
+                        }}
+                        labelRadius = {50}
+                        x = "percent"
+                        y = "total"
+                    
+                    />
+                </ChartContainer>
 
 
-                {
-                    totalByCategories.map(item => (
-                        <HistoryCard 
-                             key={item.key}
-                            title={item.name}
-                            amount={item.totalFormatted}
-                            color={item.color}
-                        />
-                    ))
-                }
+                    {
+                        totalByCategories.map(item => (
+                            <HistoryCard 
+                                key={item.key}
+                                title={item.name}
+                                amount={item.totalFormatted}
+                                color={item.color}
+                            />
+                        ))
+                    }
 
             </Content>
 
