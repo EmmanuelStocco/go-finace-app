@@ -1,10 +1,10 @@
 import React from 'react';
-import { RectButtonProps } from 'react-native-gesture-handler';                        
+import { BaseButton } from 'react-native-gesture-handler';                        
 import { SvgProps } from 'react-native-svg';
 
-interface Props extends RectButtonProps {
+interface Props extends BaseButton {
     title: string;
-    svg: React.FC<SvgProps>
+    svg: React.FC<SvgProps>  
 }
 
 import {
