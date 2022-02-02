@@ -72,12 +72,11 @@ export function SignIn() {
              
              <Footer>  
                   <View style={estilo.container}  >
-                    <TouchableOpacity  
-                        
+                    <TouchableOpacity   
                         onPress={handleSignInWithGoogle}  
                         style={estilo.button}  
                     >  
-                        <Text>Entrar com Google</Text>  
+                        <Text>Entrar </Text>  
                     </TouchableOpacity>   
 
 
@@ -106,6 +105,7 @@ export function SignIn() {
         margin: 10,
         borderRadius: 4,
         fontStyle: 'italic',  
+        color: 'black',
         
       }, 
       container: {

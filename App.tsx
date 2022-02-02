@@ -15,7 +15,7 @@ import { useFonts } from 'expo-font';
 
 import theme from './src/global/styles/theme';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { Routes } from './src/routes';
 import { AppRoutes } from './src/routes/app.routes';
 
 import { SignIn } from './src/screens/SigIn'; 
@@ -33,17 +33,14 @@ export default function App() {
   }
 
   return  (
-    <ThemeProvider theme={theme}>
-      <NavigationContainer> 
+    <ThemeProvider theme={theme}> 
         <StatusBar  
             backgroundColor="transparent"
             translucent
 />
         <AuthProvider>
-          <SignIn />
-        </AuthProvider>
-
-        </NavigationContainer>
+          <Routes />
+        </AuthProvider> 
       </ThemeProvider>
   )
 }
