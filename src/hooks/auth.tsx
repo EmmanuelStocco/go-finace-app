@@ -3,8 +3,14 @@ import React, { createContext, ReactNode, useContext, useState} from "react";
 const { CLIENT_ID } = process.env;
 const { REDIRECT_URI } = process.env;
 
+console.log(CLIENT_ID)
+console.log(REDIRECT_URI)
+
+//let CLIENT_ID = "978659469104-fe5un8s45f7gcj5cr0qs8vfj87kcrs6l.apps.googleusercontent.com"
+//let REDIRECT_URI = "https://auth.expo.io/@emmanuel_stocco/gofinance"
 
 import * as AuthSession from 'expo-auth-session';
+import * as AppleAuthenticationButton from "expo-apple-authentication";
 
 interface AuthProviderProps{
     children: ReactNode; //tipagem para elemento filho
@@ -69,6 +75,14 @@ function AuthProvider({ children } :AuthProviderProps) {
                 throw new Error();
             };
     }
+
+    // async function signInWithApple(){
+    //     try {
+    //         const credential = await AppleAuthentication.sigInAsync({
+    //             request
+    //         })
+    //     }
+    // }
 
     return(  
         <AuthContext.Provider value={{ user, signInWithGoogle }}>

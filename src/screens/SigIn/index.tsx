@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { Alert, StyleSheet } from 'react-native';
 
 import AppleSvg from '../../assets/apple.svg';
 import GoogleSvg from '../../assets/google.svg';
@@ -7,7 +8,10 @@ import LogoSvg from '../../assets/logo.svg'
                        
 import { useAuth } from '../../hooks/auth';
 
-import { SignInSocialButton } from '../../components/SigninSocialButton';
+import { SignInSocialButton } from '../../components/SigninSocialButton'; 
+import { TouchableOpacity, Text, View, Image } from 'react-native';
+// const { CLIENT_ID } = process.env;
+// const { REDIRECT_URI } = process.env;
 
 
 import {
@@ -18,12 +22,27 @@ import {
     SignInTitle,
     Footer,
     FooterWrapper,
-} from './styles';
-                          
+    ImageContainer
+} from './styles';  
+
 export function SignIn() {  
-  const { user } = useAuth(); //usando hook useContext para acessa o hock contexto que quer usar
-  console.log(user.name)
-  
+  const { signInWithGoogle } = useAuth(); //usando hook useContext para acessa o hock contexto que quer usar
+
+  async function handleSignInWithGoogle() {
+    console.log('chamou')
+    
+    // console.log(CLIENT_ID)
+    // console.log(REDIRECT_URI)
+    try {
+      
+        await signInWithGoogle();
+        
+
+    } catch (error) { 
+      console.log(error);
+      Alert.alert('Não foi possivel conectar a uma conta google ');
+    }
+  } 
    return (
      
            <Container>
@@ -46,22 +65,53 @@ export function SignIn() {
                </SignInTitle>
              </Header>
              
-             <Footer> 
-                <FooterWrapper>
-                  <SignInSocialButton 
-                      title='Entrar com Google'
-                      svg={GoogleSvg}
-                  />
+             <Footer>  
+                  <View style={estilo.container}  >
+                    <TouchableOpacity  
+                        
+                        onPress={handleSignInWithGoogle}  
+                        style={estilo.button}  
+                    >  
+                        <Text>Entrar com Google</Text>  
+                    </TouchableOpacity>   
 
-                  <SignInSocialButton 
-                      title='Entrar com Aplle'
-                      svg={AppleSvg}
-                  />
-                </FooterWrapper>
-             </Footer>
-               
+
+
+
+                    <TouchableOpacity  
+                        onPress={handleSignInWithGoogle} 
+                        style={estilo.button}   
+                    > 
+                        <Text>Entrar com Apple </Text>  
+                    </TouchableOpacity>   
+                </View>
+             </Footer>  
+
            </Container>
   
       );
      
     }
+
+    const estilo = StyleSheet.create({
+      button: {
+        alignItems: "center",
+        backgroundColor: "#DDDDDD",
+        padding: 15,
+        margin: 10,
+        borderRadius: 2,
+        fontStyle: 'italic', 
+      }, 
+      container: {
+        flex: 2,
+        justifyContent: "center",
+        paddingHorizontal: 5,
+        marginBottom: 150
+      },
+      stretch: {
+        width: 50,
+        height: 200,
+        resizeMode: 'stretch',
+      },
+    })
+    
