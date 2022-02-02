@@ -26,23 +26,28 @@ import {
 } from './styles';  
 
 export function SignIn() {  
-  const { signInWithGoogle } = useAuth(); //usando hook useContext para acessa o hock contexto que quer usar
+  const { signInWithGoogle, signInWithApple } = useAuth(); //usando hook useContext para acessa o hock contexto que quer usar
 
   async function handleSignInWithGoogle() {
-    console.log('chamou')
-    
-    // console.log(CLIENT_ID)
-    // console.log(REDIRECT_URI)
-    try {
-      
-        await signInWithGoogle();
-        
-
+    console.log('chamou google')  
+    try { 
+        await signInWithGoogle(); 
     } catch (error) { 
       console.log(error);
       Alert.alert('Não foi possivel conectar a uma conta google ');
     }
   } 
+
+  async function handleSignInWithApple() {
+    console.log('chamou apple')  
+    try { 
+        await signInWithApple(); 
+    } catch (error) { 
+      console.log(error);
+      Alert.alert('Não foi possivel conectar a conta Apple');
+    }
+  } 
+
    return (
      
            <Container>
@@ -79,7 +84,7 @@ export function SignIn() {
 
 
                     <TouchableOpacity  
-                        onPress={handleSignInWithGoogle} 
+                        onPress={handleSignInWithApple} 
                         style={estilo.button}   
                     > 
                         <Text>Entrar com Apple </Text>  
@@ -97,10 +102,11 @@ export function SignIn() {
       button: {
         alignItems: "center",
         backgroundColor: "#DDDDDD",
-        padding: 15,
+        padding: 20,
         margin: 10,
-        borderRadius: 2,
-        fontStyle: 'italic', 
+        borderRadius: 4,
+        fontStyle: 'italic',  
+        
       }, 
       container: {
         flex: 2,

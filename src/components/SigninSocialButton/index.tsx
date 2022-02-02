@@ -4,7 +4,7 @@ import { SvgProps } from 'react-native-svg';
 
 interface Props extends BaseButton {
     title: string;
-    svg: React.FC<SvgProps>  
+    svg: React.FC<SvgProps>   
 }
 
 import {
