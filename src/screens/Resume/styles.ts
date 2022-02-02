@@ -1,6 +1,8 @@
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 import { BorderlessButton } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native-gesture-handler"; 
+import { BaseButton } from "react-native-gesture-handler";
 
 import { Feather } from '@expo/vector-icons';
 

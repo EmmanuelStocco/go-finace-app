@@ -52,6 +52,7 @@ export function Resume (){
     const theme = useTheme()
 
     function handleDateChange(action: 'next' | 'prev'){
+        console.log('ok')
       
         if(action === 'next') { 
             setSelectedDate(addMonths(selectedDate, 1)); 
