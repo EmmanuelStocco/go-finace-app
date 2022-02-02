@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import AppleSvg from '../../assets/apple.svg';
 import GoogleSvg from '../../assets/google.svg';
 import LogoSvg from '../../assets/logo.svg'
+
+import { AuthContext } from '../../AuthContext';
                         
 import { SignInSocialButton } from '../../components/SigninSocialButton';
 
@@ -18,7 +20,10 @@ import {
     FooterWrapper,
 } from './styles';
                           
-export function SignIn() { 
+export function SignIn() {  
+  const data = useContext(AuthContext); //usando hook useContext para acessa o hock contexto que quer usar
+  console.log(data)
+  
    return (
      
            <Container>
