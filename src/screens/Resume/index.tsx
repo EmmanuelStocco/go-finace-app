@@ -8,6 +8,7 @@ import { useBottomTabBarHeight} from '@react-navigation/bottom-tabs'
 import { addMonths, subMonths, format } from 'date-fns'
 import { ptBR } from 'date-fns/locale';
 import { useFocusEffect } from '@react-navigation/native';
+import { TouchableOpacity, Text, View, Image } from 'react-native';
 
 import {
     Container,
@@ -150,17 +151,17 @@ export function Resume (){
                 >
 
                 <MonthSelect>
-                    <MonthSelectButton onPress={() => handleDateChange('prev')}> 
+                    <TouchableOpacity onPress={() => handleDateChange('prev')}> 
                         <MonthSelectIcon name='chevron-left' />
-                    </MonthSelectButton>
+                    </TouchableOpacity>
 
                     <Month>
                         { format(selectedDate, 'MMMM, yyyy', {locale: ptBR} )}
                     </Month>
 
-                    <MonthSelectButton onPress={() => handleDateChange('next')}> 
+                    <TouchableOpacity onPress={() => handleDateChange('next')}> 
                         <MonthSelectIcon name='chevron-right' />
-                    </MonthSelectButton>
+                    </TouchableOpacity>
                 </MonthSelect>
 
                     <ChartContainer>

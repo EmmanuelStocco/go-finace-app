@@ -1,6 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { Alert, StyleSheet } from 'react-native';
+import { ActivityIndicator, Alert, StyleSheet } from 'react-native';
+
+import { useTheme } from 'styled-components';
 
 import AppleSvg from '../../assets/apple.svg';
 import GoogleSvg from '../../assets/google.svg';
@@ -10,6 +12,9 @@ import { useAuth } from '../../hooks/auth';
 
 import { SignInSocialButton } from '../../components/SigninSocialButton'; 
 import { TouchableOpacity, Text, View, Image } from 'react-native';
+
+//<Icon name="power"/> 
+
 // const { CLIENT_ID } = process.env;
 // const { REDIRECT_URI } = process.env;
 
@@ -26,26 +31,33 @@ import {
 } from './styles';  
 
 export function SignIn() {  
+  const [isLoading, setIsLoading] = useState(false);
   const { signInWithGoogle, signInWithApple } = useAuth(); //usando hook useContext para acessa o hock contexto que quer usar
+  const theme = useTheme()
 
   async function handleSignInWithGoogle() {
     console.log('chamou google')  
     try { 
-        await signInWithGoogle(); 
+       setIsLoading(true)
+       return await signInWithGoogle(); 
     } catch (error) { 
       console.log(error);
       Alert.alert('Não foi possivel conectar a uma conta google ');
+    } finally {
+      setIsLoading(false);
     }
   } 
 
   async function handleSignInWithApple() {
-    console.log('chamou apple')  
+    console.log('chamou apple') 
     try { 
-        await signInWithApple(); 
+      setIsLoading(true)
+      return await signInWithApple(); 
     } catch (error) { 
       console.log(error);
       Alert.alert('Não foi possivel conectar a conta Apple');
     }
+    setIsLoading(false);
   } 
 
    return (
@@ -89,6 +101,8 @@ export function SignIn() {
                         <Text>Entrar com Apple </Text>  
                     </TouchableOpacity>   
                 </View>
+
+                { isLoading && <ActivityIndicator color={theme.colors.shape}  style={{marginTop: 18}}/> }
              </Footer>  
 
            </Container>

@@ -2,9 +2,13 @@ import React, { useCallback, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage' ;
 import { ActivityIndicator } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native'
+import { useAuth } from '../../hooks/auth';
+
 
 import { HighlightCard } from '../../components/HighlightCard/index';
 import { TransactionCard, TransactionCardProps } from '../../components/TransactionCard';
+import { TouchableOpacity } from 'react-native';
+
  
 import {
     Container, 
@@ -44,7 +48,8 @@ export function Dashboard(){
     const [isLoading, setIsLoading] = useState(true); 
     const [transactions, setTransactions] = useState<DataListProps[]>([]);
     const [hightLightData, setHightLightData] = useState<HighlightData>({} as HighlightData );
-    
+ 
+    const { signOut, user } = useAuth();
 
     async function loadTransactions() { //busca informações no AsyncStorage para exibir no Dashboard
         const dataKey = '@gofinances:transactions';
@@ -151,16 +156,16 @@ export function Dashboard(){
                     <Header>
                     <UserWrapper> 
                             <UserInfo>
-                                <Photo source={{ uri:"https://avatars.githubusercontent.com/u/56724388?v=4" }}/>
+                                <Photo source={{ uri: user.photo }}/>
                                 <User>
-                                    <UserGreeting> Olá </UserGreeting>
-                                    <UserName> Emmanuel </UserName>
+                                    <UserGreeting> Olá, </UserGreeting>
+                                    <UserName> {user.name} </UserName>
                                 </User>
                             </UserInfo>
                             
-                            <LogoutButton onPress={() => {}}>
+                            <TouchableOpacity onPress={signOut}>
                                 <Icon name="power"/> 
-                            </LogoutButton>
+                            </TouchableOpacity>
                         </UserWrapper>
                     </Header>
 

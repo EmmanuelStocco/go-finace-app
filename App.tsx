@@ -28,7 +28,10 @@ export default function App() {
     Poppins_700Bold
   }); //para saber se a fonte está carregando
 
-  if(!fontsLoaded){//enquanto as fontes ainda não forem carregadas
+  const { userStorageLoading } = useAuth();
+  
+
+  if(!fontsLoaded || userStorageLoading){//enquanto as fontes ainda não forem carregadas
     return <AppLoading />
   }
 
