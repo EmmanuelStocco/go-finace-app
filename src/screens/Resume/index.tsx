@@ -4,7 +4,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage' ;
 import { VictoryPie } from 'victory-native';
 import theme from '../../global/styles/theme';
 import { HistoryCard } from '../../components/HistoryCard/index';
-import { useBottomTabBarHeight} from '@react-navigation/bottom-tabs'
+import { useBottomTabBarHeight} from '@react-navigation/bottom-tabs' 
+import { useAuth } from '../../hooks/auth';
 import { addMonths, subMonths, format } from 'date-fns'
 import { ptBR } from 'date-fns/locale';
 import { useFocusEffect } from '@react-navigation/native';
@@ -51,6 +52,7 @@ export function Resume (){
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [totalByCategories, setTotalByCategories] = useState <CategoryData[]>([]);
     const theme = useTheme()
+    const { user } = useAuth();
 
     function handleDateChange(action: 'next' | 'prev'){
         console.log('ok')
@@ -66,7 +68,7 @@ export function Resume (){
 
     async function loadData(){
         setIsLoading(true);
-        const dataKey = '@gofinances:transactions'
+        const dataKey = `@gofinances:transactions_user${user.id}`;
         const response = await AsyncStorage.getItem(dataKey);
         const responseFormatted = response ? JSON.parse(response) : []; 
 

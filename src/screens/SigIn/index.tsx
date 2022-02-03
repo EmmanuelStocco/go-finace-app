@@ -13,10 +13,7 @@ import { useAuth } from '../../hooks/auth';
 import { SignInSocialButton } from '../../components/SigninSocialButton'; 
 import { TouchableOpacity, Text, View, Image } from 'react-native';
 
-//<Icon name="power"/> 
-
-// const { CLIENT_ID } = process.env;
-// const { REDIRECT_URI } = process.env;
+//<Icon name="power"/>  
 
 
 import {
@@ -27,7 +24,8 @@ import {
     SignInTitle,
     Footer,
     FooterWrapper,
-    ImageContainer
+    ImageContainer,
+    Icon,
 } from './styles';  
 
 export function SignIn() {  
@@ -43,9 +41,8 @@ export function SignIn() {
     } catch (error) { 
       console.log(error);
       Alert.alert('Não foi possivel conectar a uma conta google ');
-    } finally {
       setIsLoading(false);
-    }
+    }  
   } 
 
   async function handleSignInWithApple() {
@@ -56,6 +53,7 @@ export function SignIn() {
     } catch (error) { 
       console.log(error);
       Alert.alert('Não foi possivel conectar a conta Apple');
+      setIsLoading(false);
     }
     setIsLoading(false);
   } 
@@ -69,6 +67,7 @@ export function SignIn() {
                     width={RFValue(200)}
                     height={RFValue(70)}
                   />
+                  <Icon name="power"/>
                   <Title> 
                     Controle suas {'\n'}
                      finanças de forma  {'\n'}
@@ -87,7 +86,7 @@ export function SignIn() {
                     <TouchableOpacity   
                         onPress={handleSignInWithGoogle}  
                         style={estilo.button}  
-                    >  
+                    >   
                         <Text>Entrar </Text>  
                     </TouchableOpacity>   
 

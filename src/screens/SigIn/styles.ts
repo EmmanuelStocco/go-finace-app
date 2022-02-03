@@ -1,5 +1,6 @@
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
+import { Feather } from '@expo/vector-icons';
                                              
 export const Container = styled.View`
     flex: 1;                                             
@@ -66,4 +67,9 @@ export const ImageContainer = styled.View `
     padding: ${RFValue(16)}px;
     border-color: ${({ theme }) => theme.colors.background};
     border-right-width: 1px;
+`;
+
+export const Icon = styled(Feather) ` 
+    color: ${({ theme }) => theme.colors.secondary};
+    font-size: ${RFValue(24)}px;
 `;

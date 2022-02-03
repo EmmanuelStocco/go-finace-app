@@ -52,7 +52,7 @@ export function Dashboard(){
     const { signOut, user } = useAuth();
 
     async function loadTransactions() { //busca informações no AsyncStorage para exibir no Dashboard
-        const dataKey = '@gofinances:transactions';
+        const dataKey = `@gofinances:transactions_user${user.id}`;
         const response = await AsyncStorage.getItem(dataKey); //pegando transações do Asybnc
         const transactions = response ? JSON.parse(response) : [] //formtando dados se existirem
 
