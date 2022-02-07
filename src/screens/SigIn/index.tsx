@@ -67,7 +67,6 @@ export function SignIn() {
                     width={RFValue(200)}
                     height={RFValue(70)}
                   />
-                  <Icon name="power"/>
                   <Title> 
                     Controle suas {'\n'}
                      finanças de forma  {'\n'}
@@ -87,7 +86,12 @@ export function SignIn() {
                         onPress={handleSignInWithGoogle}  
                         style={estilo.button}  
                     >   
-                        <Text>Entrar </Text>  
+                           <GoogleSvg 
+                              width={RFValue(100)}
+                              height={RFValue(50)}
+                          
+                            />
+                        <Text>Entrar com Google  </Text>  
                     </TouchableOpacity>   
 
 
@@ -97,6 +101,10 @@ export function SignIn() {
                         onPress={handleSignInWithApple} 
                         style={estilo.button}   
                     > 
+                        <AppleSvg 
+                          width={RFValue(100)}
+                          height={RFValue(50)}                      
+                        />
                         <Text>Entrar com Apple </Text>  
                     </TouchableOpacity>   
                 </View>
@@ -114,12 +122,11 @@ export function SignIn() {
       button: {
         alignItems: "center",
         backgroundColor: "#DDDDDD",
-        padding: 20,
-        margin: 10,
+        padding: 10,
+        margin: 5,
         borderRadius: 4,
-        fontStyle: 'italic',  
-        color: 'black',
-        
+        flexDirection: 'row', 
+        color: 'black',        
       }, 
       container: {
         flex: 2,
@@ -131,6 +138,6 @@ export function SignIn() {
         width: 50,
         height: 200,
         resizeMode: 'stretch',
-      },
+      }
     })
     

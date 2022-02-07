@@ -41,6 +41,8 @@ export function TransactionTypeButton({
                 {title}
             </Title>
 
+            {console.log( type)}
+
         </Container>
     )
 }

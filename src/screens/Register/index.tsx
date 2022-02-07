@@ -47,7 +47,7 @@ const schema = Yup.object().shape({
 })
 
 export function Register(){
-    const [transactionType, setTransactionType] = useState('');
+    const [transactionType, setTransactionType] = useState('positive');
     const [categoryModalOpen, setCategoryModalOpen ] = useState(false);
 
     const { user } = useAuth();
@@ -72,6 +72,7 @@ export function Register(){
     });
 
     function handleTransactionsTypeSelect(type: 'positive' | 'negative'){
+        console.log(transactionType)
         setTransactionType(type);
     }
 
@@ -157,7 +158,7 @@ export function Register(){
                             <InputForm
                                 name="name"
                                 control={control}
-                                placeholder='nome' 
+                                placeholder='Titulo' 
                                 autoCapitalize='sentences'
                                 autoCorrect={false} 
                                 error={errors.name && errors.name.message}                            
@@ -165,20 +166,20 @@ export function Register(){
                             <InputForm
                                 name="amount"
                                 control={control}
-                                placeholder='Preço'
+                                placeholder='Valor'
                                 keyboardType='numeric' 
                                 error={errors.amount && errors.amount.message}                             
                             /> 
                             <TransactionTypes>
                                 <TransactionTypeButton
                                     type="up"
-                                    title="Income"
+                                    title="Entradas"
                                     onPress={() => handleTransactionsTypeSelect('positive')}
                                     isActive={transactionType === 'up' }
                                 />
                                 <TransactionTypeButton
                                     type="down"
-                                    title="Outcome"
+                                    title="Saídas"
                                     onPress={() => handleTransactionsTypeSelect('negative')}
                                     isActive={transactionType === 'down' }
                                 />
@@ -203,7 +204,7 @@ export function Register(){
                             />
                         </Modal>
     
-                        
+                      
                     </Form>
 
                     
