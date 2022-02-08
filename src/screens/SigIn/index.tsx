@@ -9,12 +9,8 @@ import GoogleSvg from '../../assets/google.svg';
 import LogoSvg from '../../assets/logo.svg'
                        
 import { useAuth } from '../../hooks/auth';
-
-import { SignInSocialButton } from '../../components/SigninSocialButton'; 
+ 
 import { TouchableOpacity, Text, View, Image } from 'react-native';
-
-//<Icon name="power"/>  
-
 
 import {
     Container,
@@ -23,9 +19,6 @@ import {
     Title,
     SignInTitle,
     Footer,
-    FooterWrapper,
-    ImageContainer,
-    Icon,
 } from './styles';  
 
 export function SignIn() {  

@@ -15,10 +15,7 @@ import { useFonts } from 'expo-font';
 
 import theme from './src/global/styles/theme';
 
-import { Routes } from './src/routes';
-import { AppRoutes } from './src/routes/app.routes';
-
-import { SignIn } from './src/screens/SigIn'; 
+import { Routes } from './src/routes'; 
 import { AuthProvider, useAuth } from './src/hooks/auth';//disponibilizaqndo contexto a toda aplicação
 
 export default function App() {
