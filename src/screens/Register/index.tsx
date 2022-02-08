@@ -48,6 +48,7 @@ const schema = Yup.object().shape({
 
 export function Register(){
     const [transactionType, setTransactionType] = useState('positive');
+    console.log(transactionType)
     const [categoryModalOpen, setCategoryModalOpen ] = useState(false);
 
     const { user } = useAuth();
@@ -175,13 +176,13 @@ export function Register(){
                                     type="up"
                                     title="Entradas"
                                     onPress={() => handleTransactionsTypeSelect('positive')}
-                                    isActive={transactionType === 'up' }
+                                    isActive={transactionType === 'positive' }
                                 />
                                 <TransactionTypeButton
                                     type="down"
                                     title="Saídas"
                                     onPress={() => handleTransactionsTypeSelect('negative')}
-                                    isActive={transactionType === 'down' }
+                                    isActive={transactionType === 'negative' }
                                 />
                             </TransactionTypes>
 
